@@ -50,7 +50,10 @@
 
   <section class="box">
     <div class="row">
-      <label>سبب الاستئذان:</label><input data-k="reason" maxlength="80">
+      <label>سبب الاستئذان:</label><input data-k="reason" maxlength="80" list="reasons" placeholder="اختر أو اكتب">
+      <datalist id="reasons">
+        <option value="مراجعة مستشفى"><option value="ظرف صحي"><option value="ظرف عائلي"><option value="مراجعة جهة حكومية"><option value="ظرف طارئ"><option value="موعد شخصي">
+      </datalist>
       <label>رقم الاستئذان:</label>
     </div>
     <div class="row opts">
