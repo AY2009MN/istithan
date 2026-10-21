@@ -1,6 +1,6 @@
 // خلية الختم: تحويل صورة الختم (حتى صورة كاميرا) إلى PNG شفاف مقصوص وصغير، بتحقق صارم
 const OK = /^data:image\/png;base64,[A-Za-z0-9+/=]+$/;
-const MAX_IN = 15 * 1024 * 1024, MAX_OUT = 500 * 1024, SIDE = 480;
+const MAX_IN = 15 * 1024 * 1024, MAX_OUT = 500 * 1024, SIDE = 1600, OUT = 500;
 
 // يُبقي الحبر الأزرق فقط (يحذف الورق والطاولة واليد) ثم يقصّ الهوامش
 async function clean(file) {
@@ -21,8 +21,9 @@ async function clean(file) {
   }
   if (x1 <= x0) throw new Error('no ink');
   g.putImageData(img, 0, 0);
-  const o = Object.assign(document.createElement('canvas'), { width: x1 - x0 + 1, height: y1 - y0 + 1 });
-  o.getContext('2d').drawImage(c, x0, y0, o.width, o.height, 0, 0, o.width, o.height);
+  const cw = x1 - x0 + 1, ch = y1 - y0 + 1, r = Math.min(1, OUT / cw);
+  const o = Object.assign(document.createElement('canvas'), { width: Math.round(cw * r), height: Math.round(ch * r) });
+  o.getContext('2d').drawImage(c, x0, y0, cw, ch, 0, 0, o.width, o.height);
   return o.toDataURL('image/png');
 }
 
