@@ -4,11 +4,11 @@ import * as store from './store.js';
 import * as form from './form.js';
 import * as sheet from './sheet.js';
 import * as share from './share.js';
-import { drag } from './drag.js';
+import { drag, rotate } from './drag.js';
 import { install } from './install.js';
 import './fit.js';
 
-const FIXED = ['name', 'civil', 'dept', 's1', 's2', 'sc', 'sz']; // بيانات ثابتة تُحفظ على الجهاز
+const FIXED = ['name', 'civil', 'dept', 's1', 's2', 'sc', 'sz', 'fw']; // بيانات ثابتة تُحفظ على الجهاز
 const $ = (id) => document.getElementById(id);
 const today = () => new Date().toLocaleDateString('en-GB'); // يوم/شهر/سنة
 const dayOf = (date) => {
@@ -17,6 +17,7 @@ const dayOf = (date) => {
   return isNaN(t) ? '' : t.toLocaleDateString('ar-KW', { weekday: 'long' });
 };
 const syncDay = () => { $('day').value = dayOf(form.read().date); };
+const syncOut = () => { const d = form.read(); document.querySelectorAll('[data-o]').forEach((o) => { o.value = d[o.dataset.o]; }); };
 
 // صفحتان: #edit لإدخال البيانات، و#view (الورقة) للطباعة والإرسال
 const route = () => {
@@ -28,14 +29,22 @@ const route = () => {
 };
 
 build();
-drag($('stamp'), $('sheet'));
-form.write({ ...store.load(), date: today() });
+const saved = store.load();
+const num = (v, lo, hi, d) => { const n = Number(v); return Number.isFinite(n) ? Math.min(hi, Math.max(lo, n)) : d; };
+const stamp = $('stamp'); // موضع الختم وزاويته يُحفظان على الجهاز
+if (saved.sx != null) { stamp.style.left = num(saved.sx, 0, 90, 6) + '%'; stamp.style.top = num(saved.sy, 0, 95, 61) + '%'; }
+stamp.style.setProperty('--rot', num(saved.sr, -180, 180, -12) + 'deg');
+drag(stamp, $('sheet'), (sx, sy) => store.save({ sx, sy }));
+rotate($('rot'), stamp, (sr) => store.save({ sr }));
+form.write({ ...saved, date: today() });
 syncDay();
+syncOut();
 route();
 addEventListener('hashchange', route);
 
 document.addEventListener('input', ({ target: { dataset: { k }, value } }) => {
   if (k === 'date') syncDay();
+  if (k === 'sz' || k === 'fw') syncOut();
   if (FIXED.includes(k)) store.save({ [k]: value });
 });
 

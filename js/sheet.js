@@ -9,5 +9,7 @@ export function render(d) {
   const sheet = document.getElementById('sheet'), real = d.sc === 'real';
   sheet.classList.toggle('real', real); // حبر ختم حقيقي: لون مائل للبنفسجي مع أثر انتشار الحبر
   sheet.style.setProperty('--sc', real ? '#2a47b8' : d.sc || '');
-  sheet.style.setProperty('--fs', (['16', '18', '20'].includes(d.sz) ? d.sz : '18') + 'px');
+  const n = (v, lo, hi, d0) => Math.min(hi, Math.max(lo, Math.round(Number(v)) || d0));
+  sheet.style.setProperty('--fs', n(d.sz, 18, 26, 20) + 'px');
+  sheet.style.setProperty('--fw', n(d.fw, 400, 800, 700));
 }

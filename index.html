@@ -64,13 +64,13 @@
         <option value="real">ختم حقيقي</option>
       </select>
     </label>
-    <label class="fld"><span>حجم خط الختم</span>
-      <select data-k="sz">
-        <option value="16">16</option>
-        <option value="18" selected>18</option>
-        <option value="20">20</option>
-      </select>
+    <label class="fld"><span>حجم خط الختم: <output data-o="sz"></output></span>
+      <input data-k="sz" type="range" min="18" max="26" step="1" value="20">
     </label>
+    <label class="fld"><span>سماكة الخط: <output data-o="fw"></output></span>
+      <input data-k="fw" type="range" min="400" max="800" step="100" value="700">
+    </label>
+    <p class="hint">في صفحة العرض: اسحب الختم لتحريكه، واسحب الزر ↻ فوقه لتدويره.</p>
   </div>
 
   <button class="btn" data-act="preview">عرض النموذج</button>
@@ -138,7 +138,7 @@
 
     <table id="t-sign"></table>
 
-    <div id="stamp" class="stamp"><span data-v="s1"></span><span data-v="s2"></span></div>
+    <div id="stamp" class="stamp"><span data-v="s1"></span><span data-v="s2"></span><i id="rot" class="rot no-print" data-html2canvas-ignore>↻</i></div>
 
     <div class="approve">يعتمد،، مدير المدرسة<br>..................</div>
   </main>

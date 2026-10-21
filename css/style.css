@@ -10,6 +10,8 @@ body{margin:0;background:#d9dbdd;font:16px/1.5 Tahoma,"Noto Sans Arabic",Arial,s
 .fld{display:block;margin-bottom:12px}
 .fld>span{display:block;margin-bottom:4px;font-size:14px;color:#444}
 .edit input:not([type=radio]),.edit select{width:100%;min-height:44px;padding:8px 10px;font:inherit;color:var(--ink);background:#fff;border:1px solid #b5b9bd;border-radius:8px}
+.edit input[type=range]{min-height:0;padding:0;border:0}
+.hint{margin:0;font-size:13px;color:#555}
 .day{margin:-4px 0 12px;font-size:14px;color:#444}
 .day output{color:var(--ink);font-weight:700}
 .per{display:grid;grid-template-columns:4.2em 1fr 1fr;gap:6px;align-items:center;margin-bottom:6px}
@@ -61,8 +63,9 @@ th{font-weight:700}
 .opts i{display:grid;place-items:center;width:13mm;height:13mm;border:1.5px solid #000;border-radius:50%}
 .opts i.on::after{content:"✓";color:var(--ink);font-size:40px;font-weight:700;line-height:1;margin-top:-8px}
 
-.stamp{position:absolute;left:6%;top:61%;display:flex;flex-direction:column;align-items:center;color:var(--sc,#1f48c4);font-weight:700;font-size:var(--fs,18px);line-height:1.3;transform:rotate(-12deg);cursor:grab;touch-action:none;user-select:none}
-.stamp span+span{font-size:calc(var(--fs,18px) - 2px)}
+.stamp{position:absolute;left:6%;top:61%;display:flex;flex-direction:column;align-items:center;color:var(--sc,#1f48c4);font-weight:var(--fw,700);font-size:var(--fs,20px);line-height:1.3;transform:rotate(var(--rot,-12deg));cursor:grab;touch-action:none;user-select:none}
+.rot{position:absolute;top:-30px;left:50%;margin-left:-14px;display:grid;place-items:center;width:28px;height:28px;font-style:normal;font-size:18px;font-weight:400;line-height:1;color:#fff;background:#1e2327;border-radius:50%;cursor:grab;touch-action:none}
+.stamp span+span{font-size:calc(var(--fs,20px) - 2px)}
 .real .stamp{opacity:.85;text-shadow:0 0 1.5px currentColor}
 .approve{margin:6mm auto 0 6mm;width:60mm;text-align:center;font-size:15px}
 
