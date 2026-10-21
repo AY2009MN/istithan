@@ -32,14 +32,14 @@ label input:focus-visible+i,label input:focus-visible+b{outline:2px solid #e69f0
 
 input{flex:1;min-width:0;font:inherit;color:inherit;text-align:center;background:none;border:0;border-bottom:1px dotted #000;border-radius:0;outline:0;padding:0}
 input:focus{background:#fff6cc}
-input[type=date],input[type=time]{border:0;direction:ltr}
+input[type=time]{border:0;direction:ltr}
 
 td input{width:100%}
 table{width:100%;border-collapse:collapse;table-layout:fixed;text-align:center;margin-bottom:3mm}
-th,td{border:1px solid #000;height:13mm;padding:1px 2px}
+th,td{border:1px solid #000;height:11.5mm;padding:1px 2px}
 th{font-weight:700}
 #t-periods th:first-child{width:27mm}
-.tall td{height:22mm}
+.tall td{height:16mm}
 /* القالب أبيض وأسود، وما يُضاف بالحبر الأزرق */
 .sheet{--ink:#1a3fc0}
 .sheet input{color:var(--ink)}

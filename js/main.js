@@ -7,12 +7,13 @@ import { install } from './install.js';
 import './fit.js';
 
 const FIXED = ['name', 'civil', 'dept', 's1', 's2', 'sc']; // بيانات ثابتة تُحفظ على الجهاز
-const today = () => new Date().toLocaleDateString('en-CA');
+const today = () => new Date().toLocaleDateString('en-GB'); // يوم/شهر/سنة
 const sheet = document.getElementById('sheet');
 const color = () => sheet.style.setProperty('--sc', form.read().sc);
 const syncDay = () => {
-  const d = new Date(form.read().date + 'T00:00');
-  form.write({ day: isNaN(d) ? '' : d.toLocaleDateString('ar-KW', { weekday: 'long' }) });
+  const [d, m, y] = form.read().date.split('/');
+  const t = new Date(y, m - 1, d);
+  form.write({ day: isNaN(t) ? '' : t.toLocaleDateString('ar-KW', { weekday: 'long' }) });
 };
 
 build();
@@ -38,3 +39,4 @@ document.querySelector('.bar').addEventListener('click', (e) =>
   Promise.resolve(act[e.target.dataset.act]?.()).catch(() => alert('تعذّر تنفيذ العملية')));
 
 navigator.serviceWorker?.register('sw.js');
+if (navigator.serviceWorker?.controller) navigator.serviceWorker.addEventListener('controllerchange', () => location.reload()); // تحديث تلقائي

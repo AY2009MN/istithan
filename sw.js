@@ -1,5 +1,5 @@
-// خلية العمل دون إنترنت: كاش أولًا. غيّر CACHE عند أي تعديل، وأضف أي ملف جديد لـ FILES.
-const CACHE = 'istithan-v7';
+// خلية العمل دون إنترنت: شبكة أولاً ثم كاش. غيّر CACHE عند أي تعديل، وأضف أي ملف جديد لـ FILES.
+const CACHE = 'istithan-v8';
 const FILES = [
   './', 'index.html', 'css/style.css', 'manifest.webmanifest',
   'js/main.js', 'js/grid.js', 'js/store.js', 'js/form.js',
@@ -15,5 +15,10 @@ self.addEventListener('activate', (e) =>
     .then((ks) => Promise.all(ks.filter((k) => k !== CACHE).map((k) => caches.delete(k))))
     .then(() => self.clients.claim())));
 
-self.addEventListener('fetch', (e) =>
-  e.respondWith(caches.match(e.request).then((r) => r || fetch(e.request))));
+// الشبكة أولاً (يصل آخر تحديث دائماً) ثم الكاش عند انقطاع الإنترنت
+self.addEventListener('fetch', (e) => {
+  if (e.request.method !== 'GET') return;
+  e.respondWith(fetch(e.request, { cache: 'no-cache' })
+    .then((r) => { const c = r.clone(); caches.open(CACHE).then((ch) => ch.put(e.request, c)); return r; })
+    .catch(() => caches.match(e.request)));
+});

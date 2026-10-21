@@ -8,12 +8,9 @@ function shoot() {
   document.activeElement?.blur();
   return window.html2canvas(document.getElementById('sheet'), {
     scale: 2, backgroundColor: '#fff',
-    onclone: (d) => { // عرض التاريخ بصيغة يوم/شهر/سنة في الصورة
+    onclone: (d) => { // إخفاء عناصر الإرشاد من اللقطة
       d.documentElement.classList.add('shot');
       d.querySelectorAll('[placeholder]').forEach((e) => e.removeAttribute('placeholder'));
-      const i = d.querySelector('[data-k=date]');
-      i.type = 'text';
-      i.value = i.value.split('-').reverse().join('/');
     },
   });
 }
