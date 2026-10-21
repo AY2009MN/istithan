@@ -6,5 +6,7 @@ export function render(d) {
     e.classList.toggle('on', d[k] === v);
   }
   document.getElementById('stamp').hidden = !d.s1 && !d.s2;
-  document.getElementById('sheet').style.setProperty('--sc', d.sc || '');
+  const s = document.getElementById('sheet').style;
+  s.setProperty('--sc', d.sc || '');
+  s.setProperty('--z', d.sz || '1');
 }

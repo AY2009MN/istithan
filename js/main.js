@@ -8,7 +8,7 @@ import { drag } from './drag.js';
 import { install } from './install.js';
 import './fit.js';
 
-const FIXED = ['name', 'civil', 'dept', 's1', 's2', 'sc']; // بيانات ثابتة تُحفظ على الجهاز
+const FIXED = ['name', 'civil', 'dept', 's1', 's2', 'sc', 'sz']; // بيانات ثابتة تُحفظ على الجهاز
 const $ = (id) => document.getElementById(id);
 const today = () => new Date().toLocaleDateString('en-GB'); // يوم/شهر/سنة
 const dayOf = (date) => {
