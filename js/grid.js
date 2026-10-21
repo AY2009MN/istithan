@@ -14,7 +14,7 @@ export function build() {
     row(['اسم المعلم البديل', ...n.map(() => '')], 'td', 'th'),
   );
   document.getElementById('t-sign').append(
-    row(['ساعة الخروج', 'ساعة العودة', 'توقيع المعلم', 'رئيس القسم', 'مدير المدرسة'], 'th'),
-    Object.assign(row([field('out', 'time'), field('back', 'time'), '', el('div', { className: 'stamp' }, field('s1', 'text', 'اسم صاحب الختم'), field('s2', 'text', 'القسم')), '']), { className: 'tall' }),
+    row(['ساعة الخروج', 'ساعة العودة', 'توقيع المعلم', 'توقيع رئيس القسم'], 'th'),
+    Object.assign(row([field('out', 'time'), field('back', 'time'), '', el('div', { className: 'stamp' }, field('s1', 'text', 'اسم صاحب الختم'), field('s2', 'text', 'القسم'))]), { className: 'tall' }),
   );
 }

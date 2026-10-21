@@ -45,40 +45,47 @@
   <div class="row">
     <label>اسم المعلم:</label><input data-k="name" maxlength="60" autocomplete="off">
     <label>الرقم المدني:</label><input data-k="civil" maxlength="12" inputmode="numeric" autocomplete="off">
+    <label>القسم:</label><input data-k="dept" maxlength="40">
   </div>
-  <div class="row"><label>القسم:</label><input data-k="dept" maxlength="40"></div>
 
-  <section class="box">
-    <div class="row">
-      <label>سبب الاستئذان:</label><input data-k="reason" maxlength="80" list="reasons" placeholder="اختر أو اكتب">
-      <datalist id="reasons">
-        <option value="مراجعة مستشفى"><option value="ظرف صحي"><option value="ظرف عائلي"><option value="مراجعة جهة حكومية"><option value="ظرف طارئ"><option value="موعد شخصي">
-      </datalist>
-      <label>رقم الاستئذان:</label>
-    </div>
-    <div class="row opts">
-      <label><input type="radio" name="no" data-k="no" value="1"><i></i>1</label>
-      <label><input type="radio" name="no" data-k="no" value="2"><i></i>2</label>
-      <label><input type="radio" name="no" data-k="no" value="3"><i></i>3</label>
-      <label><input type="radio" name="no" data-k="no" value="4"><i></i>4</label>
-    </div>
+  <section class="box dash row">
+    <label>سبب الاستئذان:</label>
+    <input data-k="reason" maxlength="80" list="reasons" placeholder="اختر أو اكتب">
+    <datalist id="reasons">
+      <option value="مراجعة مستشفى"><option value="ظرف صحي"><option value="ظرف عائلي"><option value="مراجعة جهة حكومية"><option value="ظرف طارئ"><option value="موعد شخصي">
+    </datalist>
+    <span>رقم الاستئذان:</span>
+    <span class="nums">
+      <label><input type="radio" name="no" data-k="no" value="1"><b>1</b></label>
+      <label><input type="radio" name="no" data-k="no" value="2"><b>2</b></label>
+      <label><input type="radio" name="no" data-k="no" value="3"><b>3</b></label>
+      <label><input type="radio" name="no" data-k="no" value="4"><b>4</b></label>
+    </span>
   </section>
 
   <h2>جدول المعلم</h2>
   <table id="t-periods"></table>
 
-  <div class="row opts">
-    <span>المتابعة اليومية:</span>
-    <label><input type="radio" name="follow" data-k="follow" value="yes"><i></i>يوجد</label>
-    <label><input type="radio" name="follow" data-k="follow" value="no"><i></i>لا يوجد</label>
-  </div>
-  <div class="row opts">
-    <span>نوع الاستئذان:</span>
-    <label><input type="radio" name="kind" data-k="kind" value="task"><i></i>تكليف</label>
-    <label><input type="radio" name="kind" data-k="kind" value="official"><i></i>رسمي</label>
+  <div class="groups">
+    <div class="grp">
+      <h3>المتابعة اليومية</h3>
+      <div class="opts">
+        <label><span>يوجد</span><input type="radio" name="follow" data-k="follow" value="yes"><i></i></label>
+        <label><span>لا يوجد</span><input type="radio" name="follow" data-k="follow" value="no"><i></i></label>
+      </div>
+    </div>
+    <div class="grp">
+      <h3>نوع الاستئذان</h3>
+      <div class="opts">
+        <label><span>تكليف</span><input type="radio" name="kind" data-k="kind" value="task"><i></i></label>
+        <label><span>رسمي</span><input type="radio" name="kind" data-k="kind" value="official"><i></i></label>
+      </div>
+    </div>
   </div>
 
   <table id="t-sign"></table>
+
+  <div class="approve">يعتمد،، مدير المدرسة<br>..................</div>
 </main>
 
 <script src="js/vendor/html2canvas.min.js"></script>
