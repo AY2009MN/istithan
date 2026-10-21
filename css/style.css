@@ -12,6 +12,8 @@ body{margin:0;background:#d9dbdd;font:16px/1.5 Tahoma,"Noto Sans Arabic",Arial,s
 .edit input:not([type=radio]),.edit select{width:100%;min-height:44px;padding:8px 10px;font:inherit;color:var(--ink);background:#fff;border:1px solid #b5b9bd;border-radius:8px}
 .day{margin:-4px 0 12px;font-size:14px;color:#444}
 .day output{color:var(--ink);font-weight:700}
+.per{display:grid;grid-template-columns:4.2em 1fr 1fr;gap:6px;align-items:center;margin-bottom:6px}
+.per b{font-weight:400;font-size:14px}
 .chips{display:flex;gap:8px}
 .chips label{flex:1}
 .chips input{position:absolute;opacity:0;width:0;height:0}
@@ -49,6 +51,7 @@ th{font-weight:700}
 #t-periods th:first-child{width:27mm}
 .tall td{height:13mm}
 #t-sign th{height:7mm}
+#t-periods .f{display:block;border:0;font-size:14px;line-height:1.2}
 
 .groups{display:flex;justify-content:space-between;margin:2mm 4mm 4mm}
 .grp h3{margin:0 0 1mm;font-size:16px;font-weight:400}
