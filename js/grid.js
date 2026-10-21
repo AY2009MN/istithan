@@ -15,6 +15,6 @@ export function build() {
   );
   document.getElementById('t-sign').append(
     row(['ساعة الخروج', 'ساعة العودة', 'توقيع المعلم', 'رئيس القسم', 'مدير المدرسة'], 'th'),
-    Object.assign(row([field('out', 'time'), field('back', 'time'), '', '', el('img', { id: 'stamp', alt: '' })]), { className: 'tall' }),
+    Object.assign(row([field('out', 'time'), field('back', 'time'), '', el('img', { id: 'stamp', alt: '' }), '']), { className: 'tall' }),
   );
 }
