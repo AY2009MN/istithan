@@ -1,12 +1,11 @@
-// خلية التثبيت: زر يثبّت التطبيق إن دعمه المتصفح، وإلا يشرح الطريقة
-let ev;
+// خلية التثبيت: زر يثبّت التطبيق مباشرة (WebAPK) إن سمح المتصفح، وإلا يشرح السبب
 const btn = document.querySelector('[data-act=install]');
 if (matchMedia('(display-mode: standalone)').matches) btn.hidden = true;
-addEventListener('beforeinstallprompt', (e) => { e.preventDefault(); ev = e; });
 addEventListener('appinstalled', () => { btn.hidden = true; });
 
 export async function install() {
-  if (!ev) return alert('من قائمة المتصفح اختر «تثبيت التطبيق» أو «إضافة صفحة إلى» ← «الشاشة الرئيسية» (متصفح سامسونج).\nإن فتحت الرابط من داخل تطبيق آخر فافتحه في Chrome أو Safari.');
+  const ev = window.installEvent;
+  if (!ev) return alert('المتصفح لم يسمح بنافذة التثبيت الآن.\nالتطبيق قد يكون مثبّتاً مسبقاً: ابحث عنه باسم «استئذان» في قائمة تطبيقاتك.\nأو افتح الرابط في Chrome وأعد المحاولة بعد لحظات.');
+  window.installEvent = null;
   await ev.prompt();
-  ev = null;
 }
