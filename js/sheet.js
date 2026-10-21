@@ -6,7 +6,8 @@ export function render(d) {
     e.classList.toggle('on', d[k] === v);
   }
   document.getElementById('stamp').hidden = !d.s1 && !d.s2;
-  const s = document.getElementById('sheet').style;
-  s.setProperty('--sc', d.sc || '');
-  s.setProperty('--z', d.sz || '1');
+  const sheet = document.getElementById('sheet'), real = d.sc === 'real';
+  sheet.classList.toggle('real', real); // حبر ختم حقيقي: لون مائل للبنفسجي مع أثر انتشار الحبر
+  sheet.style.setProperty('--sc', real ? '#2a47b8' : d.sc || '');
+  sheet.style.setProperty('--fs', (['16', '18', '20'].includes(d.sz) ? d.sz : '18') + 'px');
 }
