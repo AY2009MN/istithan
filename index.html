@@ -12,81 +12,121 @@
 <title>نموذج استئذان</title>
 </head>
 <body>
-<nav class="bar no-print">
-  <button data-act="new">نموذج جديد</button>
-  <button data-act="print">طباعة</button>
-  <button data-act="pdf">PDF</button>
-  <button data-act="img">صورة</button>
-  <button data-act="install">تثبيت التطبيق</button>
-  <label>لون الختم
-    <select data-k="sc">
-      <option value="#2f6fe0">أزرق فاتح</option>
-      <option value="#1f48c4">أزرق</option>
-      <option value="#12308c">أزرق غامق</option>
-    </select>
-  </label>
-</nav>
+<section id="edit" class="edit no-print">
+  <h1>بيانات الاستئذان</h1>
 
-<main id="sheet" class="sheet">
-  <header class="head">
-    <div class="gov">
-      <img src="img/moe.png" alt="">
-      <div>وزارة التربية<br>منطقة العاصمة التعليمية<br>مدرسة يوسف السيد هاشم الرفاعي م. بنين</div>
-    </div>
-    <h1>نموذج استئذان</h1>
-    <img class="logo" src="img/school.png" alt="">
-  </header>
-
-  <section class="box row">
-    <label>اليوم:</label><input data-k="day" readonly tabindex="-1">
-    <label>التاريخ:</label><input data-k="date" dir="ltr" inputmode="numeric" maxlength="10" placeholder="يوم/شهر/سنة">
-  </section>
-
-  <div class="row">
-    <label>اسم المعلم:</label><input data-k="name" maxlength="60" autocomplete="off">
-    <label>الرقم المدني:</label><input data-k="civil" maxlength="12" inputmode="numeric" autocomplete="off">
-    <label>القسم:</label><input data-k="dept" maxlength="40">
+  <div class="card">
+    <label class="fld"><span>التاريخ (يوم/شهر/سنة)</span><input data-k="date" dir="ltr" inputmode="numeric" maxlength="10"></label>
+    <div class="day">اليوم: <output id="day"></output></div>
+    <label class="fld"><span>اسم المعلم</span><input data-k="name" maxlength="60" autocomplete="off"></label>
+    <label class="fld"><span>الرقم المدني</span><input data-k="civil" maxlength="12" inputmode="numeric" autocomplete="off"></label>
+    <label class="fld"><span>القسم</span><input data-k="dept" maxlength="40"></label>
   </div>
 
-  <section class="box dash row">
-    <label>سبب الاستئذان:</label>
-    <input data-k="reason" maxlength="80" list="reasons" placeholder="اختر أو اكتب">
+  <div class="card">
+    <label class="fld"><span>سبب الاستئذان (اختر أو اكتب)</span>
+      <input data-k="reason" maxlength="80" list="reasons">
+    </label>
     <datalist id="reasons">
       <option value="مراجعة مستشفى"><option value="ظرف صحي"><option value="ظرف عائلي"><option value="مراجعة جهة حكومية"><option value="ظرف طارئ"><option value="موعد شخصي">
     </datalist>
-    <span>رقم الاستئذان:</span>
-    <span class="nums">
-      <label><input type="radio" name="no" data-k="no" value="1"><b>1</b></label>
-      <label><input type="radio" name="no" data-k="no" value="2"><b>2</b></label>
-      <label><input type="radio" name="no" data-k="no" value="3"><b>3</b></label>
-      <label><input type="radio" name="no" data-k="no" value="4"><b>4</b></label>
-    </span>
-  </section>
-
-  <h2>جدول المعلم</h2>
-  <table id="t-periods"></table>
-
-  <div class="groups">
-    <div class="grp">
-      <h3>المتابعة اليومية</h3>
-      <div class="opts">
-        <label><span>يوجد</span><input type="radio" name="follow" data-k="follow" value="yes"><i></i></label>
-        <label><span>لا يوجد</span><input type="radio" name="follow" data-k="follow" value="no"><i></i></label>
-      </div>
-    </div>
-    <div class="grp">
-      <h3>نوع الاستئذان</h3>
-      <div class="opts">
-        <label><span>تكليف</span><input type="radio" name="kind" data-k="kind" value="task"><i></i></label>
-        <label><span>رسمي</span><input type="radio" name="kind" data-k="kind" value="official"><i></i></label>
-      </div>
-    </div>
+    <div class="fld"><span>رقم الاستئذان</span><div class="chips">
+      <label><input type="radio" name="no" data-k="no" value="1"><span>1</span></label>
+      <label><input type="radio" name="no" data-k="no" value="2"><span>2</span></label>
+      <label><input type="radio" name="no" data-k="no" value="3"><span>3</span></label>
+      <label><input type="radio" name="no" data-k="no" value="4"><span>4</span></label>
+    </div></div>
+    <div class="fld"><span>المتابعة اليومية</span><div class="chips">
+      <label><input type="radio" name="follow" data-k="follow" value="yes"><span>يوجد</span></label>
+      <label><input type="radio" name="follow" data-k="follow" value="no"><span>لا يوجد</span></label>
+    </div></div>
+    <div class="fld"><span>نوع الاستئذان</span><div class="chips">
+      <label><input type="radio" name="kind" data-k="kind" value="task"><span>تكليف</span></label>
+      <label><input type="radio" name="kind" data-k="kind" value="official"><span>رسمي</span></label>
+    </div></div>
+    <label class="fld"><span>ساعة الخروج</span><input data-k="out" type="time"></label>
+    <label class="fld"><span>ساعة العودة</span><input data-k="back" type="time"></label>
   </div>
 
-  <table id="t-sign"></table>
+  <div class="card">
+    <label class="fld"><span>الختم – السطر الأول (الاسم)</span><input data-k="s1" maxlength="40"></label>
+    <label class="fld"><span>الختم – السطر الثاني (القسم)</span><input data-k="s2" maxlength="40"></label>
+    <label class="fld"><span>لون الختم</span>
+      <select data-k="sc">
+        <option value="#2f6fe0">أزرق فاتح</option>
+        <option value="#1f48c4">أزرق</option>
+        <option value="#12308c">أزرق غامق</option>
+      </select>
+    </label>
+  </div>
 
-  <div class="approve">يعتمد،، مدير المدرسة<br>..................</div>
-</main>
+  <button class="btn" data-act="preview">عرض النموذج</button>
+  <button class="btn alt" data-act="new">نموذج جديد</button>
+  <button class="btn alt" data-act="install">تثبيت التطبيق</button>
+</section>
+
+<section id="view" hidden>
+  <nav class="bar no-print">
+    <button data-act="back">رجوع للتعديل</button>
+    <button data-act="print">طباعة</button>
+    <button data-act="pdf">PDF</button>
+    <button data-act="img">صورة</button>
+  </nav>
+
+  <main id="sheet" class="sheet">
+    <header class="head">
+      <div class="gov">
+        <img src="img/moe.png" alt="">
+        <div>وزارة التربية<br>منطقة العاصمة التعليمية<br>مدرسة يوسف السيد هاشم الرفاعي م. بنين</div>
+      </div>
+      <h1>نموذج استئذان</h1>
+      <img class="logo" src="img/school.png" alt="">
+    </header>
+
+    <section class="box row">
+      <span>اليوم:</span><span class="f" data-v="day"></span>
+      <span>التاريخ:</span><span class="f" data-v="date"></span>
+    </section>
+
+    <div class="row">
+      <span>اسم المعلم:</span><span class="f" data-v="name"></span>
+      <span>الرقم المدني:</span><span class="f" data-v="civil"></span>
+      <span>القسم:</span><span class="f" data-v="dept"></span>
+    </div>
+
+    <section class="box dash row">
+      <span>سبب الاستئذان:</span><span class="f" data-v="reason"></span>
+      <span>رقم الاستئذان:</span>
+      <span class="nums"><b data-c="no:1">1</b>–<b data-c="no:2">2</b>–<b data-c="no:3">3</b>–<b data-c="no:4">4</b></span>
+    </section>
+
+    <h2>جدول المعلم</h2>
+    <table id="t-periods"></table>
+
+    <div class="groups">
+      <div class="grp">
+        <h3>المتابعة اليومية</h3>
+        <div class="opts">
+          <div><span>يوجد</span><i data-c="follow:yes"></i></div>
+          <div><span>لا يوجد</span><i data-c="follow:no"></i></div>
+        </div>
+      </div>
+      <div class="grp">
+        <h3>نوع الاستئذان</h3>
+        <div class="opts">
+          <div><span>تكليف</span><i data-c="kind:task"></i></div>
+          <div><span>رسمي</span><i data-c="kind:official"></i></div>
+        </div>
+      </div>
+    </div>
+
+    <table id="t-sign"></table>
+
+    <div id="stamp" class="stamp"><span data-v="s1"></span><span data-v="s2"></span></div>
+
+    <div class="approve">يعتمد،، مدير المدرسة<br>..................</div>
+  </main>
+</section>
 
 <script src="js/vendor/html2canvas.min.js"></script>
 <script type="module" src="js/main.js"></script>

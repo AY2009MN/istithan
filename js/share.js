@@ -4,16 +4,7 @@ import { jpegToPdf } from './pdf.js';
 const toBlob = (c, type, q) => new Promise((ok) => c.toBlob(ok, type, q));
 const stamp = () => new Date().toLocaleDateString('en-CA');
 
-function shoot() {
-  document.activeElement?.blur();
-  return window.html2canvas(document.getElementById('sheet'), {
-    scale: 2, backgroundColor: '#fff',
-    onclone: (d) => { // إخفاء عناصر الإرشاد من اللقطة
-      d.documentElement.classList.add('shot');
-      d.querySelectorAll('[placeholder]').forEach((e) => e.removeAttribute('placeholder'));
-    },
-  });
-}
+const shoot = () => window.html2canvas(document.getElementById('sheet'), { scale: 2, backgroundColor: '#fff' });
 
 async function deliver(blob, name) {
   const file = new File([blob], name, { type: blob.type });

@@ -1,8 +1,8 @@
 // خلية العمل دون إنترنت: شبكة أولاً ثم كاش. غيّر CACHE عند أي تعديل، وأضف أي ملف جديد لـ FILES.
-const CACHE = 'istithan-v8';
+const CACHE = 'istithan-v10';
 const FILES = [
   './', 'index.html', 'css/style.css', 'manifest.webmanifest',
-  'js/main.js', 'js/grid.js', 'js/store.js', 'js/form.js',
+  'js/main.js', 'js/grid.js', 'js/store.js', 'js/form.js', 'js/sheet.js', 'js/drag.js',
   'js/pdf.js', 'js/share.js', 'js/fit.js', 'js/install.js', 'js/vendor/html2canvas.min.js',
   'img/moe.png', 'img/school.png', 'img/icon-192.png', 'img/icon-512.png',
 ];
