@@ -14,6 +14,7 @@ async function clean(file) {
   let x0 = w, y0 = h, x1 = 0, y1 = 0;
   for (let i = 0; i < d.length; i += 4) {
     d[i + 3] = Math.max(0, Math.min(255, (d[i + 2] - d[i] - 25) * 4));
+    d[i] = 30; d[i + 1] = 70; d[i + 2] = 200; // أزرق الحبر الموحّد
     if (d[i + 3] > 60) {
       const p = i / 4, x = p % w, y = (p / w) | 0;
       x0 = Math.min(x0, x); x1 = Math.max(x1, x); y0 = Math.min(y0, y); y1 = Math.max(y1, y);
