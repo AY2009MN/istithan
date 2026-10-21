@@ -1,9 +1,11 @@
 {
   "name": "نموذج استئذان",
   "short_name": "استئذان",
+  "id": "./",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
+  "orientation": "portrait",
   "dir": "rtl",
   "lang": "ar",
   "background_color": "#ffffff",

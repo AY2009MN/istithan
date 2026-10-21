@@ -12,7 +12,7 @@ const FIXED = ['name', 'civil', 'dept', 's1', 's2', 'sc']; // بيانات ثا�
 const $ = (id) => document.getElementById(id);
 const today = () => new Date().toLocaleDateString('en-GB'); // يوم/شهر/سنة
 const dayOf = (date) => {
-  const [d, m, y] = date.split('/');
+  const [d, m, y] = date.split(/\s*\/\s*/);
   const t = new Date(y, m - 1, d);
   return isNaN(t) ? '' : t.toLocaleDateString('ar-KW', { weekday: 'long' });
 };
@@ -21,7 +21,7 @@ const syncDay = () => { $('day').value = dayOf(form.read().date); };
 // صفحتان: #edit لإدخال البيانات، و#view (الورقة) للطباعة والإرسال
 const route = () => {
   const view = location.hash === '#view';
-  if (view) { const d = form.read(); sheet.render({ ...d, day: dayOf(d.date) }); }
+  if (view) { const d = form.read(); sheet.render({ ...d, day: dayOf(d.date), date: d.date.split(/\s*\/\s*/).join(' / ') }); }
   $('edit').hidden = view;
   $('view').hidden = !view;
   scrollTo(0, 0);

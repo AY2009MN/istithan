@@ -6,7 +6,7 @@ addEventListener('beforeinstallprompt', (e) => { e.preventDefault(); ev = e; });
 addEventListener('appinstalled', () => { btn.hidden = true; });
 
 export async function install() {
-  if (!ev) return alert('من قائمة المتصفح اختر «تثبيت التطبيق» أو «إضافة إلى الشاشة الرئيسية».\nإن فتحت الرابط من داخل تطبيق آخر فافتحه في Chrome أو Safari.');
+  if (!ev) return alert('من قائمة المتصفح اختر «تثبيت التطبيق» أو «إضافة صفحة إلى» ← «الشاشة الرئيسية» (متصفح سامسونج).\nإن فتحت الرابط من داخل تطبيق آخر فافتحه في Chrome أو Safari.');
   await ev.prompt();
   ev = null;
 }
