@@ -10,6 +10,7 @@ function shoot() {
     scale: 2, backgroundColor: '#fff',
     onclone: (d) => { // عرض التاريخ بصيغة يوم/شهر/سنة في الصورة
       d.documentElement.classList.add('shot');
+      d.querySelectorAll('[placeholder]').forEach((e) => e.removeAttribute('placeholder'));
       const i = d.querySelector('[data-k=date]');
       i.type = 'text';
       i.value = i.value.split('-').reverse().join('/');
