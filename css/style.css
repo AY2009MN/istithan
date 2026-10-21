@@ -1,0 +1,41 @@
+*{box-sizing:border-box}
+body{margin:0;background:#d9dbdd;font:16px/1.5 Tahoma,"Noto Sans Arabic",Arial,sans-serif;color:#000}
+.bar{position:sticky;top:0;z-index:2;display:flex;flex-wrap:wrap;gap:6px;justify-content:center;padding:8px;background:#1e2327}
+.bar button,.bar label{font:inherit;padding:6px 14px;border:0;border-radius:6px;background:#fff;cursor:pointer}
+
+.sheet{width:210mm;height:297mm;margin:10px auto;padding:9mm 12mm;background:#fff;overflow:hidden}
+.head{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.gov{display:flex;align-items:center;gap:8px;font-size:14px;line-height:1.6}
+.gov img{width:20mm}
+.logo{width:24mm}
+h1{margin:0;font-size:30px}
+h2{margin:5mm 0 2mm;font-size:16px;text-align:center}
+
+.row{display:flex;align-items:baseline;gap:8px;margin:4.5mm 0}
+.box{border:2px solid #000;padding:1.5mm 4mm}
+.box .row{margin:1.5mm 0}
+.opts{gap:18px}.opts label{display:flex;align-items:center;gap:6px;cursor:pointer}
+label input[type=radio]{position:absolute;opacity:0;width:0;height:0}
+label i{width:20px;height:20px;border:2px solid #000;border-radius:50%}
+label input:checked+i{background:#000}
+label input:focus-visible+i{outline:2px solid #e69f00;outline-offset:2px}
+
+input{flex:1;min-width:0;font:inherit;color:inherit;text-align:center;background:none;border:0;border-bottom:1px dotted #000;border-radius:0;outline:0;padding:0}
+input:focus{background:#fff6cc}
+input[type=date],input[type=time]{border:0;direction:ltr}
+
+td input{width:100%}
+table{width:100%;border-collapse:collapse;table-layout:fixed;text-align:center;margin-bottom:3mm}
+th,td{border:1px solid #000;height:13mm;padding:1px 2px}
+th{font-weight:700}
+#t-periods th:first-child{width:27mm}
+.tall td{height:42mm}
+#stamp{max-width:100%;max-height:38mm;cursor:pointer}
+#stamp:not([src]){display:none}
+
+@media print{
+  @page{size:A4;margin:0}
+  body{background:#fff}
+  .no-print{display:none}
+  .sheet{margin:0}
+}
