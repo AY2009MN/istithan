@@ -31,17 +31,21 @@ table{width:100%;border-collapse:collapse;table-layout:fixed;text-align:center;m
 th,td{border:1px solid #000;height:13mm;padding:1px 2px}
 th{font-weight:700}
 #t-periods th:first-child{width:27mm}
-.tall td{height:42mm}
+.tall td{height:24mm}
 /* القالب أبيض وأسود، وما يُضاف بالحبر الأزرق */
 .sheet{--ink:#1a3fc0}
 .sheet input{color:var(--ink)}
 .stamp{display:flex;flex-direction:column;gap:2px}
 .stamp input{border:0;font-weight:700;font-size:18px;color:var(--sc,#1f48c4);opacity:.9}
 .stamp input+input{font-size:15px}
+html:not(.shot) .sheet input{background:#f1f5ff}
+.shot ::placeholder{color:transparent}
 
 @media print{
   @page{size:A4;margin:0}
   body{background:#fff}
   .no-print{display:none}
+  ::placeholder{color:transparent}
+  .sheet input{background:none}
   .sheet{margin:0}
 }
