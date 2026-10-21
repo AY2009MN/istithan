@@ -3,6 +3,7 @@ import { build } from './grid.js';
 import * as store from './store.js';
 import * as form from './form.js';
 import * as share from './share.js';
+import { install } from './install.js';
 import './fit.js';
 
 const FIXED = ['name', 'civil', 'dept', 's1', 's2', 'sc']; // بيانات ثابتة تُحفظ على الجهاز
@@ -31,6 +32,7 @@ const act = {
   print: () => window.print(),
   pdf: share.sharePdf,
   img: share.shareImage,
+  install,
 };
 document.querySelector('.bar').addEventListener('click', (e) =>
   Promise.resolve(act[e.target.dataset.act]?.()).catch(() => alert('تعذّر تنفيذ العملية')));
