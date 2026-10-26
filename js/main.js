@@ -32,7 +32,7 @@ build();
 const saved = store.load();
 const num = (v, lo, hi, d) => { const n = Number(v); return Number.isFinite(n) ? Math.min(hi, Math.max(lo, n)) : d; };
 const stamp = $('stamp'); // موضع الختم وزاويته يُحفظان على الجهاز
-if (saved.sx != null) { stamp.style.left = num(saved.sx, 0, 90, 38) + '%'; stamp.style.top = num(saved.sy, 0, 95, 68) + '%'; }
+if (saved.sx != null) { stamp.style.left = num(saved.sx, 0, 90, 36) + '%'; stamp.style.top = num(saved.sy, 0, 95, 68) + '%'; }
 stamp.style.setProperty('--rot', num(saved.sr, -180, 180, -12) + 'deg');
 drag(stamp, $('sheet'), (sx, sy) => store.save({ sx, sy }));
 rotate($('rot'), stamp, (sr) => store.save({ sr }));
