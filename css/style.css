@@ -59,9 +59,10 @@ th{font-weight:700;font-size:11px}
 .opts i{display:grid;place-items:center;width:10mm;height:10mm;border:.35mm solid #000;border-radius:50%}
 .opts i.on::after{content:"✓";color:var(--ink);font-size:31px;font-weight:700;line-height:1;margin-top:-6px}
 
-.sign{display:flex;gap:5mm;margin:5mm 0 0 24mm;align-items:baseline}
+.sign{display:flex;gap:5mm;margin:6mm 0 0 0;align-items:baseline}
 .line{flex:1;min-width:10mm;border-bottom:1px dotted #000}
-.logo{position:absolute;left:7mm;bottom:5mm;width:16mm}
+.sch{display:flex;justify-content:flex-end}
+.sch img{width:16mm}
 
 .stamp{position:absolute;left:36%;top:68%;display:flex;flex-direction:column;align-items:center;color:var(--sc,#1f48c4);font-weight:var(--fw,700);font-size:calc(var(--fs,20px)*.8);line-height:1.3;transform:rotate(var(--rot,-12deg));cursor:grab;touch-action:none;user-select:none}
 .rot{position:absolute;top:-26px;left:50%;margin-left:-12px;display:grid;place-items:center;width:24px;height:24px;font-style:normal;font-size:16px;font-weight:400;line-height:1;color:#fff;background:#1e2327;border-radius:50%;cursor:grab;touch-action:none}
