@@ -31,6 +31,22 @@
   </div>
 
   <div class="card">
+    <p class="hint">حقول اختيارية تُضاف إلى الورقة عند الحاجة، وتختفي عند إيقاف الزر.</p>
+    <label class="sw"><input type="checkbox" data-k="showReason"><span>إضافة سبب الاستئذان (أعلى الجدول)</span></label>
+    <label class="fld" data-opt="showReason" hidden><span>سبب الاستئذان (اختر أو اكتب)</span>
+      <input data-k="reason" maxlength="80" list="reasons">
+    </label>
+    <datalist id="reasons">
+      <option value="مراجعة مستشفى"><option value="ظرف صحي"><option value="ظرف عائلي"><option value="مراجعة جهة حكومية"><option value="ظرف طارئ"><option value="موعد شخصي">
+    </datalist>
+    <label class="sw"><input type="checkbox" data-k="showKind"><span>إضافة نوع الاستئذان (بجانب المراقبة اليومية)</span></label>
+    <div class="fld" data-opt="showKind" hidden><span>نوع الاستئذان</span><div class="chips">
+      <label><input type="radio" name="kind" data-k="kind" value="task"><span>تكليف</span></label>
+      <label><input type="radio" name="kind" data-k="kind" value="official"><span>رسمي</span></label>
+    </div></div>
+  </div>
+
+  <div class="card">
     <div class="fld"><span>جدول المعلم: الفصل والمعلم البديل لكل حصة (اترك الفارغ كما هو)</span><div id="e-periods"></div></div>
   </div>
 
@@ -87,14 +103,24 @@
       <div class="cell"><span>الرقم المدني:</span><span id="civ" class="civ"></span></div>
     </div>
 
+    <div class="row" data-show="showReason" hidden><div class="cell"><span>سبب الاستئذان:</span><span class="f" data-v="reason"></span></div></div>
     <h2>جدول المعلم</h2>
     <table id="t-periods"></table>
 
-    <div class="grp">
-      <h3>المراقبة اليومية:</h3>
-      <div class="opts">
-        <div><span>يوجد</span><i data-c="follow:yes"></i></div>
-        <div><span>لا يوجد</span><i data-c="follow:no"></i></div>
+    <div class="grps">
+      <div class="grp">
+        <h3>المراقبة اليومية:</h3>
+        <div class="opts">
+          <div><span>يوجد</span><i data-c="follow:yes"></i></div>
+          <div><span>لا يوجد</span><i data-c="follow:no"></i></div>
+        </div>
+      </div>
+      <div class="grp" data-show="showKind" hidden>
+        <h3>نوع الاستئذان:</h3>
+        <div class="opts">
+          <div><span>تكليف</span><i data-c="kind:task"></i></div>
+          <div><span>رسمي</span><i data-c="kind:official"></i></div>
+        </div>
       </div>
     </div>
 

@@ -8,7 +8,7 @@ import { drag, rotate } from './drag.js';
 import { install } from './install.js';
 import './fit.js';
 
-const FIXED = ['name', 'civil', 's1', 's2', 'sc', 'sz', 'fw']; // بيانات ثابتة تُحفظ على الجهاز
+const FIXED = ['name', 'civil', 's1', 's2', 'sc', 'sz', 'fw', 'showReason', 'showKind']; // بيانات ثابتة تُحفظ على الجهاز (ومنها تفعيل الحقول الاختيارية)
 const $ = (id) => document.getElementById(id);
 const today = () => new Date().toLocaleDateString('en-GB'); // يوم/شهر/سنة
 const dayOf = (date) => {
@@ -17,6 +17,7 @@ const dayOf = (date) => {
   return isNaN(t) ? '' : t.toLocaleDateString('ar-KW', { weekday: 'long' });
 };
 const syncDay = () => { $('day').value = dayOf(form.read().date); };
+const syncOpt = () => { const d = form.read(); document.querySelectorAll('[data-opt]').forEach((o) => { o.hidden = !d[o.dataset.opt]; }); };
 const syncOut = () => { const d = form.read(); document.querySelectorAll('[data-o]').forEach((o) => { o.value = d[o.dataset.o]; }); };
 
 // صفحتان: #edit لإدخال البيانات، و#view (الورقة) للطباعة والإرسال
@@ -39,10 +40,12 @@ rotate($('rot'), stamp, (sr) => store.save({ sr }));
 form.write({ ...saved, date: today() });
 syncDay();
 syncOut();
+syncOpt();
 route();
 addEventListener('hashchange', route);
 
-document.addEventListener('input', ({ target: { dataset: { k }, value } }) => {
+document.addEventListener('input', ({ target: { dataset: { k }, value, type, checked } }) => {
+  if (type === 'checkbox') { value = checked ? '1' : ''; syncOpt(); }
   if (k === 'date') syncDay();
   if (k === 'sz' || k === 'fw') syncOut();
   if (FIXED.includes(k)) store.save({ [k]: value });
@@ -51,7 +54,7 @@ document.addEventListener('input', ({ target: { dataset: { k }, value } }) => {
 const act = {
   preview: () => { location.hash = '#view'; },
   back: () => { location.hash = ''; },
-  new: () => confirm('بدء نموذج جديد؟') && (form.reset(FIXED), form.write({ date: today() }), syncDay()),
+  new: () => confirm('بدء نموذج جديد؟') && (form.reset(FIXED), form.write({ date: today() }), syncDay(), syncOpt()),
   print: () => window.print(),
   pdf: share.sharePdf,
   img: share.shareImage,

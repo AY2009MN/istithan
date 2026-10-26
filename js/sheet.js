@@ -5,6 +5,7 @@ export function render(d) {
     const [k, v] = e.dataset.c.split(':');
     e.classList.toggle('on', d[k] === v);
   }
+  for (const e of document.querySelectorAll('[data-show]')) e.hidden = !d[e.dataset.show]; // الحقول الاختيارية تظهر عند تفعيلها فقط
   const civil = (d.civil ?? '').replace(/[٠-٩]/g, (c) => c.charCodeAt(0) - 1632).replace(/\D/g, ''); // رقم مدني: رقم في كل مربع
   document.querySelectorAll('#civ b').forEach((b, i) => { b.textContent = civil[i] ?? ''; });
   document.getElementById('stamp').hidden = !d.s1 && !d.s2;
