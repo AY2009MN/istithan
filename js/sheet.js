@@ -5,6 +5,8 @@ export function render(d) {
     const [k, v] = e.dataset.c.split(':');
     e.classList.toggle('on', d[k] === v);
   }
+  const civil = (d.civil ?? '').replace(/[٠-٩]/g, (c) => c.charCodeAt(0) - 1632).replace(/\D/g, ''); // رقم مدني: رقم في كل مربع
+  document.querySelectorAll('#civ b').forEach((b, i) => { b.textContent = civil[i] ?? ''; });
   document.getElementById('stamp').hidden = !d.s1 && !d.s2;
   const sheet = document.getElementById('sheet'), real = d.sc === 'real';
   sheet.classList.toggle('real', real); // حبر ختم حقيقي: لون مائل للبنفسجي مع أثر انتشار الحبر

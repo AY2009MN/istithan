@@ -1,6 +1,6 @@
 // خلية PDF: كاتب مصغّر بلا مكتبات — صفحة A4 واحدة فيها صورة JPEG
 const enc = new TextEncoder();
-const W = 595.28, H = 841.89;
+const W = 841.89, H = 595.28; // A4 أفقي
 
 export function jpegToPdf(jpeg, w, h) {
   const ih = (W * h) / w, content = `q ${W} 0 0 ${ih.toFixed(2)} 0 ${(H - ih).toFixed(2)} cm /Im0 Do Q`;

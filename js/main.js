@@ -8,7 +8,7 @@ import { drag, rotate } from './drag.js';
 import { install } from './install.js';
 import './fit.js';
 
-const FIXED = ['name', 'civil', 'dept', 's1', 's2', 'sc', 'sz', 'fw']; // بيانات ثابتة تُحفظ على الجهاز
+const FIXED = ['name', 'civil', 's1', 's2', 'sc', 'sz', 'fw']; // بيانات ثابتة تُحفظ على الجهاز
 const $ = (id) => document.getElementById(id);
 const today = () => new Date().toLocaleDateString('en-GB'); // يوم/شهر/سنة
 const dayOf = (date) => {
@@ -32,7 +32,7 @@ build();
 const saved = store.load();
 const num = (v, lo, hi, d) => { const n = Number(v); return Number.isFinite(n) ? Math.min(hi, Math.max(lo, n)) : d; };
 const stamp = $('stamp'); // موضع الختم وزاويته يُحفظان على الجهاز
-if (saved.sx != null) { stamp.style.left = num(saved.sx, 0, 90, 6) + '%'; stamp.style.top = num(saved.sy, 0, 95, 61) + '%'; }
+if (saved.sx != null) { stamp.style.left = num(saved.sx, 0, 90, 38) + '%'; stamp.style.top = num(saved.sy, 0, 95, 68) + '%'; }
 stamp.style.setProperty('--rot', num(saved.sr, -180, 180, -12) + 'deg');
 drag(stamp, $('sheet'), (sx, sy) => store.save({ sx, sy }));
 rotate($('rot'), stamp, (sr) => store.save({ sr }));

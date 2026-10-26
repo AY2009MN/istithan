@@ -20,33 +20,14 @@
     <label class="fld"><span>التاريخ (يوم/شهر/سنة)</span><input data-k="date" dir="ltr" inputmode="numeric" maxlength="10"></label>
     <div class="day">اليوم: <output id="day"></output></div>
     <label class="fld"><span>اسم المعلم</span><input data-k="name" maxlength="60" autocomplete="off"></label>
-    <label class="fld"><span>الرقم المدني</span><input data-k="civil" maxlength="12" inputmode="numeric" autocomplete="off"></label>
-    <label class="fld"><span>القسم</span><input data-k="dept" maxlength="40"></label>
+    <label class="fld"><span>الرقم المدني (12 رقمًا)</span><input data-k="civil" maxlength="12" inputmode="numeric" autocomplete="off" dir="ltr"></label>
   </div>
 
   <div class="card">
-    <label class="fld"><span>سبب الاستئذان (اختر أو اكتب)</span>
-      <input data-k="reason" maxlength="80" list="reasons">
-    </label>
-    <datalist id="reasons">
-      <option value="مراجعة مستشفى"><option value="ظرف صحي"><option value="ظرف عائلي"><option value="مراجعة جهة حكومية"><option value="ظرف طارئ"><option value="موعد شخصي">
-    </datalist>
-    <div class="fld"><span>رقم الاستئذان</span><div class="chips">
-      <label><input type="radio" name="no" data-k="no" value="1"><span>1</span></label>
-      <label><input type="radio" name="no" data-k="no" value="2"><span>2</span></label>
-      <label><input type="radio" name="no" data-k="no" value="3"><span>3</span></label>
-      <label><input type="radio" name="no" data-k="no" value="4"><span>4</span></label>
-    </div></div>
     <div class="fld"><span>المراقبة اليومية</span><div class="chips">
       <label><input type="radio" name="follow" data-k="follow" value="yes"><span>يوجد</span></label>
       <label><input type="radio" name="follow" data-k="follow" value="no"><span>لا يوجد</span></label>
     </div></div>
-    <div class="fld"><span>نوع الاستئذان</span><div class="chips">
-      <label><input type="radio" name="kind" data-k="kind" value="task"><span>تكليف</span></label>
-      <label><input type="radio" name="kind" data-k="kind" value="official"><span>رسمي</span></label>
-    </div></div>
-    <label class="fld"><span>ساعة الخروج</span><input data-k="out" type="time"></label>
-    <label class="fld"><span>ساعة العودة</span><input data-k="back" type="time"></label>
   </div>
 
   <div class="card">
@@ -93,54 +74,39 @@
         <div>منطقة العاصمة التعليمية</div>
       </div>
       <h1>نموذج استئذان</h1>
-      <div class="sch">
-      <img src="img/school.png" alt="">
-      <div>مدرسة يوسف السيد هاشم الرفاعي م. بنين</div>
-    </div>
+      <div class="gap"></div>
     </header>
 
-    <section class="box row">
-      <span>اليوم:</span><span class="f" data-v="day"></span>
-      <span>التاريخ:</span><span class="f" data-v="date"></span>
-    </section>
-
-    <div class="row">
-      <span>اسم المعلم:</span><span class="f" data-v="name"></span>
-      <span>الرقم المدني:</span><span class="f" data-v="civil"></span>
-      <span>القسم:</span><span class="f" data-v="dept"></span>
+    <div class="row two">
+      <div class="cell"><span>اليوم:</span><span class="f" data-v="day"></span></div>
+      <div class="cell"><span>التاريخ:</span><span class="f" data-v="date"></span></div>
     </div>
 
-    <section class="box dash row">
-      <span>سبب الاستئذان:</span><span class="f" data-v="reason"></span>
-      <span>رقم الاستئذان:</span>
-      <span class="nums"><b data-c="no:1">1</b>–<b data-c="no:2">2</b>–<b data-c="no:3">3</b>–<b data-c="no:4">4</b></span>
-    </section>
+    <div class="row two">
+      <div class="cell"><span>اسم المعلم:</span><span class="f" data-v="name"></span></div>
+      <div class="cell"><span>الرقم المدني:</span><span id="civ" class="civ"></span></div>
+    </div>
 
     <h2>جدول المعلم</h2>
     <table id="t-periods"></table>
 
-    <div class="groups">
-      <div class="grp">
-        <h3>المراقبة اليومية</h3>
-        <div class="opts">
-          <div><span>يوجد</span><i data-c="follow:yes"></i></div>
-          <div><span>لا يوجد</span><i data-c="follow:no"></i></div>
-        </div>
-      </div>
-      <div class="grp">
-        <h3>نوع الاستئذان</h3>
-        <div class="opts">
-          <div><span>تكليف</span><i data-c="kind:task"></i></div>
-          <div><span>رسمي</span><i data-c="kind:official"></i></div>
-        </div>
+    <div class="grp">
+      <h3>المراقبة اليومية:</h3>
+      <div class="opts">
+        <div><span>يوجد</span><i data-c="follow:yes"></i></div>
+        <div><span>لا يوجد</span><i data-c="follow:no"></i></div>
       </div>
     </div>
 
-    <table id="t-sign"></table>
+    <div class="sign">
+      <div class="cell"><span>توقيع المعلم:</span><span class="line"></span></div>
+      <div class="cell"><span>توقيع رئيس القسم:</span><span class="line"></span></div>
+      <div class="cell"><span>يعتمد من المدير/المساعد:</span><span class="line"></span></div>
+    </div>
+
+    <img class="logo" src="img/school.png" alt="">
 
     <div id="stamp" class="stamp"><span data-v="s1"></span><span data-v="s2"></span><i id="rot" class="rot no-print" data-html2canvas-ignore>↻</i></div>
-
-    <div class="approve">يعتمد،، مدير المدرسة<br>..................</div>
   </main>
 </section>
 

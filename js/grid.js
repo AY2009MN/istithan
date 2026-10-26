@@ -1,4 +1,4 @@
-// خلية الجداول: تبني جدول الحصص (إدخال وعرض) وجدول التوقيعات والختم بـ DOM آمن (بلا innerHTML)
+// خلية الجداول: تبني جدول الحصص (إدخال وعرض) ومربعات الرقم المدني بـ DOM آمن (بلا innerHTML)
 const PERIODS = ['الأولى', 'الثانية', 'الثالثة', 'الرابعة', 'الخامسة', 'السادسة', 'السابعة'];
 
 const el = (tag, props = {}, ...kids) => { const e = Object.assign(document.createElement(tag), props); e.append(...kids); return e; };
@@ -16,8 +16,5 @@ export function build() {
     row(['الفصل', ...n.map((i) => val('cls' + i))], 'td', 'th'),
     row(['اسم المعلم البديل', ...n.map((i) => val('sub' + i))], 'td', 'th'),
   );
-  document.getElementById('t-sign').append(
-    row(['ساعة الخروج', 'ساعة العودة', 'توقيع المعلم', 'توقيع رئيس القسم'], 'th'),
-    Object.assign(row([val('out'), val('back'), '', '']), { className: 'tall' }),
-  );
+  document.getElementById('civ').append(...Array.from({ length: 12 }, () => el('b')));
 }
